@@ -36,11 +36,11 @@ fun remove_second l = hd l :: tl(tl l);
 
 (* get only odd index elements *)
 fun take l =
-	if l = nil then nil
-	else hd l :: skip(tl l)
+  if l = nil then nil
+  else hd l :: skip(tl l)
 and skip l =
-	if l = nil then nil
-	else take(tl l)
+  if l = nil then nil
+  else take(tl l)
 
 (* factorial *)
 fun fact n = if n <= 1 then 1 else n * fact(n-1)
@@ -56,4 +56,4 @@ fun duplicate_each l =
 (* length of list *)
 fun len l =
   if l = nil then 0
-  else 1 + len(tl l);
+  else 1 + len(tl l)
