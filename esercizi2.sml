@@ -34,3 +34,8 @@ fun largest (l: string list) =
   if tl l = nil then hd l
   else if hd l > hd(tl l) then largest(hd l :: tl(tl l))
   else largest(tl l)
+
+(* reverse list *)
+fun reverse l =
+  if l = nil then nil
+  else reverse(tl l) @ [hd l]
