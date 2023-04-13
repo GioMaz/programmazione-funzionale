@@ -29,4 +29,34 @@ fun prod_diff_1 (x, nil) = 1.0
   | prod_diff_1 (x, y::ys) = (x - y) * prod_diff_1 (x, ys)
 
 fun prod_diff_2 nil = 1.0
-  | prod_diff_2 (x::xs) = prod_diff_1(x, xs) * prod_diff_2(xs);
+  | prod_diff_2 (x::xs) = prod_diff_1(x, xs) * prod_diff_2(xs)
+
+(* split odd and even indexes *)
+fun split nil = (nil, nil)
+  | split [x] = ([x], nil)
+  | split (x::y::ys) =
+  let
+    val (m, n) = split (ys)
+  in
+    (x::m, y::n)
+  end
+
+(* calculate x^2^i that is equals to x^2^i-1 * x^2^i-1*)
+fun pow2i (x, 0) = x (* x^2^0 *)
+  | pow2i (x, i) = (* x^2^i *)
+  let
+    val y = pow2i(x, i-1)
+  in
+    y * y
+  end
+
+(* sum first and second elements of tuples *)
+fun sum_pairs nil = (0,0)
+  | sum_pairs ((x, y)::xs) =
+  let
+    val (a, b) = sum_pairs(xs)
+  in
+    (x + a, y + b)
+  end;
+
+sum_pairs [(1,2), (2,3), (3,4)];
