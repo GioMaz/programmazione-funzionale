@@ -41,4 +41,4 @@ fun remove (nil, i) = nil
 (* order tuples inside of list *)
 fun order_couples nil = nil
   | order_couples ((a,b)::xs) = if a < b then (a,b)::order_couples xs
-                               else (b,a)::order_couples xs;
+                                else (b,a)::order_couples xs;
