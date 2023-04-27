@@ -59,4 +59,12 @@ fun sum_pairs nil = (0,0)
     (x + a, y + b)
   end;
 
-sum_pairs [(1,2), (2,3), (3,4)];
+(* sum odd and even indexes into a tuple *)
+fun sum_even_odd nil = (0, 0)
+  | sum_even_odd (x::nil) = (x, 0)
+  | sum_even_odd (x::y::ys) =
+  let
+    val (x1, y1) = sum_even_odd (ys)
+  in
+    (x+x1, y+y1)
+  end;
