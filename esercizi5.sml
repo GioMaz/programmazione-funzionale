@@ -83,3 +83,8 @@ fun filter (f, nil) = nil
   | filter (f, x::xs) = if f(x) then x :: filter(f, xs) else filter(f, xs);
 
 filter (fn x => x mod 2 = 0, [1,2,3,4]);
+
+(* left version of reduce *)
+fun lreduce (f, nil) = raise EmptyList
+  | lreduce (f, [x]) = x
+  | lreduce (f, x::xs) = f(reduce(f, xs), x);
