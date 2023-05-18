@@ -30,3 +30,11 @@ val f3 = f1 o f2;
 map (fn x => x+1) [1,2,3];
 foldr (fn (x, y) => x - y) 0 [1,2,4,8]; (* 4-8 -> 2--4 -> 1-6 *)
 foldl (fn (x, y) => x - y) 0 [1,2,4,8]; (* 2-1 -> 4-1 -> 8-3 *)
+
+(* and of list of booleans *)
+(* unnecessary function wrapping *)
+(* fun andl x = foldr (fn (x, y) => x andalso y) true x; *)
+val andl = foldr (fn (x, y) => x andalso y) true;
+
+(* xor of list of booleans *)
+val xor = foldr (fn (x, y) => x <> y) false;
