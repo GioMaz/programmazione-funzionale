@@ -1,7 +1,30 @@
+(* peano *)
+datatype naturale = zero | successivo of naturale;
+
+fun sum x zero = x
+  | sum x (successivo y) = sum (successivo x) y;
+
+fun prod x zero = zero
+  | prod x (successivo zero) = x
+  | prod x (successivo y) = sum x (prod x y);
+
+(* binary tree *)
 datatype 'label btree =
   Empty |
   Node of 'label * 'label btree * 'label btree;
 
+fun lookup Empty R _ = false
+  | lookup (Node(y, left, right)) R x = if R x y then lookup left R x
+                                        else if R y x then lookup right R x
+                                        else true;
+
+fun insert Empty R x = Node(x, Empty, Empty)
+  | insert (T as Node(y, left, right)) R x =
+      if R x y then Node (y, insert left R x, right)
+      else if R y x then Node (y, left, insert right R x)
+      else T;
+
+(* switch *)
 fun day1 n = case n of
                     1 => "Monday"
                   | 2 => "Tuesday"
