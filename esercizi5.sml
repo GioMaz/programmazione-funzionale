@@ -51,7 +51,7 @@ fun trap (a, b, n, f) =
       trap1(a, n)
     end;
 
-trap (0.0, 1.0, 200, fn x => x * x);
+trap (0.0, 1.0, 200, fn x => x*x*x);
 
 (* tabulate function *)
 fun tabulate (a, delta, 0, f) = ()
