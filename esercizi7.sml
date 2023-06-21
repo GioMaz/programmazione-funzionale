@@ -8,6 +8,21 @@ fun prod x zero = zero
   | prod x (succ zero) = x
   | prod x (succ y) = somma x (prod x y);
 
+(* insiemi *)
+type insieme = int -> bool;
+
+fun vuoto _ = false;
+
+fun intersezione (x: insieme) (y: insieme) n = (x n) andalso (y n);
+
+fun unione (x: insieme) (y: insieme) n = (x n) orelse (y n);
+
+fun aggiungi (x: insieme) y n = (x n) orelse y = n;
+
+val pari = fn x => x mod 2 = 0;
+
+val pariesessantanove = aggiungi pari 69;
+
 (* binary tree *)
 datatype 'label btree =
   Empty |
