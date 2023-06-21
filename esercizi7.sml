@@ -1,12 +1,12 @@
 (* peano *)
-datatype naturale = zero | successivo of naturale;
+datatype naturale = zero | succ of naturale;
 
-fun sum x zero = x
-  | sum x (successivo y) = sum (successivo x) y;
+fun somma x zero = x
+  | somma x (succ y) = somma (succ x) y;
 
 fun prod x zero = zero
-  | prod x (successivo zero) = x
-  | prod x (successivo y) = sum x (prod x y);
+  | prod x (succ zero) = x
+  | prod x (succ y) = somma x (prod x y);
 
 (* binary tree *)
 datatype 'label btree =
