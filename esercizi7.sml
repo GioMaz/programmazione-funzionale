@@ -2,7 +2,9 @@
 datatype naturale = zero | succ of naturale;
 
 fun somma x zero = x
-  | somma x (succ y) = somma (succ x) y;
+  | somma x (succ y) = succ (somma x y);
+  (* oppure *)
+  (*| somma x (succ y) = somma (succ x) y;*)
 
 fun prod x zero = zero
   | prod x (succ zero) = x
